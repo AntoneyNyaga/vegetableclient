@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- App Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#2979FF"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🥦 Vegetable Service Engine"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- Tab buttons for the 5 tasks -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF">
+        <LinearLayout
+            android:id="@+id/tabRow"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+
+            <Button android:id="@+id/tabAdd"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Add" android:textColor="#2979FF"/>
+            <Button android:id="@+id/tabUpdate"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Update" android:textColor="#757575"/>
+            <Button android:id="@+id/tabDelete"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Delete" android:textColor="#757575"/>
+            <Button android:id="@+id/tabCost"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Cost" android:textColor="#757575"/>
+            <Button android:id="@+id/tabReceipt"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Receipt" android:textColor="#757575"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Divider line under tabs -->
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+        android:background="#E0E0E0"/>
+
+    <!-- Scrollable content area -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/contentArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ── PANEL 1: Add Vegetable ─────────────────────────────── -->
+            <LinearLayout android:id="@+id/panelAdd"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView android:text="Add New Vegetable"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"/>
+                <EditText android:id="@+id/addId"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Vegetable ID (e.g. V006)"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="10dp"/>
+                <EditText android:id="@+id/addName"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Vegetable Name (e.g. Broccoli)"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="10dp"/>
+                <EditText android:id="@+id/addPrice"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Price per kg (KES)" android:inputType="numberDecimal"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="16dp"/>
+                <Button android:id="@+id/btnAdd"
+                    android:layout_width="match_parent" android:layout_height="48dp"
+                    android:text="ADD VEGETABLE" android:backgroundTint="#2979FF"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+
+            <!-- ── PANEL 2: Update Vegetable ─────────────────────────── -->
+            <LinearLayout android:id="@+id/panelUpdate"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone">
+                <TextView android:text="Update Vegetable Price"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"/>
+                <EditText android:id="@+id/updateId"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Vegetable ID to update"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="10dp"/>
+                <EditText android:id="@+id/updateName"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="New Name"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="10dp"/>
+                <EditText android:id="@+id/updatePrice"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="New Price per kg (KES)" android:inputType="numberDecimal"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="16dp"/>
+                <Button android:id="@+id/btnUpdate"
+                    android:layout_width="match_parent" android:layout_height="48dp"
+                    android:text="UPDATE VEGETABLE" android:backgroundTint="#FF9800"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+
+            <!-- ── PANEL 3: Delete Vegetable ──────────────────────────── -->
+            <LinearLayout android:id="@+id/panelDelete"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone">
+                <TextView android:text="Delete Vegetable"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"/>
+                <EditText android:id="@+id/deleteId"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Vegetable ID to delete (e.g. V003)"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="16dp"/>
+                <Button android:id="@+id/btnDelete"
+                    android:layout_width="match_parent" android:layout_height="48dp"
+                    android:text="DELETE VEGETABLE" android:backgroundTint="#F44336"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+
+            <!-- ── PANEL 4: Calculate Cost ────────────────────────────── -->
+            <LinearLayout android:id="@+id/panelCost"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone">
+                <TextView android:text="Calculate Vegetable Cost"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"/>
+                <EditText android:id="@+id/costId"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Vegetable ID (e.g. V001)"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="10dp"/>
+                <EditText android:id="@+id/costQty"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Quantity in kg (e.g. 2.5)" android:inputType="numberDecimal"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="16dp"/>
+                <Button android:id="@+id/btnCost"
+                    android:layout_width="match_parent" android:layout_height="48dp"
+                    android:text="CALCULATE COST" android:backgroundTint="#4CAF50"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+
+            <!-- ── PANEL 5: Print Receipt ─────────────────────────────── -->
+            <LinearLayout android:id="@+id/panelReceipt"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone">
+                <TextView android:text="Print Receipt"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"/>
+                <EditText android:id="@+id/cashierName"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Cashier Name"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="10dp"/>
+                <EditText android:id="@+id/receiptItems"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Items: V001:2.0,V002:1.5,V004:1.0"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="10dp"/>
+                <EditText android:id="@+id/amountGiven"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Amount Given (KES)" android:inputType="numberDecimal"
+                    android:background="@drawable/input_bg" android:padding="12dp"
+                    android:layout_marginBottom="16dp"/>
+                <Button android:id="@+id/btnReceipt"
+                    android:layout_width="match_parent" android:layout_height="48dp"
+                    android:text="PRINT RECEIPT" android:backgroundTint="#9C27B0"
+                    android:textColor="#FFFFFF"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Result area at the bottom -->
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+        android:background="#E0E0E0"/>
+    <TextView android:text="Result"
+        android:textStyle="bold" android:textSize="13sp"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:paddingStart="16dp" android:paddingTop="8dp"
+        android:textColor="#757575"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="#FFFFFF">
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Results will appear here after each action..."
+            android:padding="12dp"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:textColor="#212121"/>
+    </ScrollView>
+
+</LinearLayout>
