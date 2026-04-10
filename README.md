@@ -29,7 +29,7 @@ Make sure you have the following installed on your system:
 ---
 
 **VegetableClient** 
-This the Android front-end of a simple distributed mobile application. The app communicates with a remote **Java RMI-based server** (exposed through HTTP servlets running on Tomcat) to manage vegetable pricing and generate purchase receipts.
+Is the Android front-end of a simple distributed mobile application. The app communicates with a remote **Java RMI-based server** (exposed through HTTP servlets running on Tomcat) to manage vegetable pricing and generate purchase receipts.
 
 The system is split across two repositories:
 
@@ -38,6 +38,37 @@ The system is split across two repositories:
 **Server Engine** | [vegetable_service_engine](https://github.com/leah25/vegetable_service_engine) | Java RMI + Tomcat servlets — processes tasks and returns results |
 
 ---
+
+## Architecture
+
+```
+┌─────────────────────────────────────┐        HTTP POST
+│         Android App (Client)        │ ──────────────────────▶ ┌──────────────────────────┐
+│                                     │                          │    Tomcat Web Server     │
+│  - Activity / UI Layer              │                          │  (vegetable_service_engine) │
+│  - HTTP Requests (HttpURLConnection │ ◀────────────────────── │                          │
+│    or Volley/Retrofit)              │     Plain Text Response  │  Servlets → RMI Engine   │
+└─────────────────────────────────────┘                          │  → VegetablePriceTable   │
+                                                                  └──────────────────────────┘
+```
+
+The Android client sends `HTTP POST` requests to servlet endpoints. The server processes each request using the Java RMI compute engine and returns a plain text response.
+
+
+
+
+**API Endpoints**
+
+All endpoints accept `HTTP POST` requests. The server must be running and accessible over the network.
+
+| Endpoint | Parameters | Description |
+|----------|-----------|-------------|
+| `POST /vegetable/add` | `id`, `name`, `price` | Add a new vegetable |
+| `POST /vegetable/update` | `id`, `name`, `price` | Update an existing vegetable |
+| `POST /vegetable/delete` | `id` | Delete a vegetable |
+| `POST /vegetable/cost` | `id`, `quantity` | Calculate cost for a given quantity (kg) |
+| `POST /vegetable/receipt` | `items`, `amountGiven`, `cashierName` | Generate a full purchase receipt |
+
 
 ## ✨ Features
 
