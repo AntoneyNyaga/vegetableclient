@@ -1,33 +1,3 @@
-
-- **app/** – Contains Android app code and resources  
-- **gradle/** – Gradle configuration files  
-- **build.gradle.kts** – Main Gradle build file
-
----
-
-## Features (Example)
-
-✔ Displays a list of vegetables  
-✔ UI screens with basic navigation  
-✔ Built with Android best practices  
-✔ Modular Gradle configuration  
-
-> You can expand it with backend integration, local database, or additional screens.
-
----
-
-## Getting Started
-
-### Prerequisites
-
-Make sure you have the following installed on your system:
-
-- Android Studio (latest stable)
-- Java JDK 11+
-- Android SDK
-
----
-
 **VegetableClient** 
 Is the Android front-end of a simple distributed mobile application. The app communicates with a remote **Java RMI-based server** (exposed through HTTP servlets running on Tomcat) to manage vegetable pricing and generate purchase receipts.
 
