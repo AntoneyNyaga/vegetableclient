@@ -5,7 +5,7 @@
 
 ---
 
-## 🚀 Features (Example)
+## Features (Example)
 
 ✔ Displays a list of vegetables  
 ✔ UI screens with basic navigation  
@@ -16,7 +16,7 @@
 
 ---
 
-## 🛠 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -70,25 +70,65 @@ All endpoints accept `HTTP POST` requests. The server must be running and access
 | `POST /vegetable/receipt` | `items`, `amountGiven`, `cashierName` | Generate a full purchase receipt |
 
 
-## ✨ Features
+## Features
 
-- 🥕 **Add** a new vegetable with its price per kg
-- ✏️ **Update** an existing vegetable's price
-- 🗑️ **Delete** a vegetable from the price table
-- 💰 **Calculate Cost** for a single vegetable by quantity
-- 🧾 **Generate Receipt** — multi-item purchase receipt with totals, change due, and cashier name
+- **Add** a new vegetable with its price per kg
+- **Update** an existing vegetable's price
+- **Delete** a vegetable from the price table
+- **Calculate Cost** for a single vegetable by quantity
+- **Generate Receipt** — multi-item purchase receipt with totals, change due, and cashier name
+  
+
+## Prerequisites
+
+Before running this app, make sure you have:
+
+- **Android Studio** (latest stable release)
+- **JDK 11+**
+- **Android SDK** (API level compatible with the project's `minSdk`)
+- The **backend server** up and running — see [vegetable_service_engine](https://github.com/leah25/vegetable_service_engine)
 
 
+---
 
+## Getting Started
 
-### Run the Project
+### 1. Clone the repository
 
-1. Clone the repo  
+```bash
+git clone https://github.com/AntoneyNyaga/vegetableclient.git
+cd vegetableclient
+```
 
-   ```bash
-   git clone https://github.com/AntoneyNyaga/vegetableclient.git
-   
-2. Server side Link
+### 2. Open in Android Studio
 
-   Kindly find the Backened(Server side), done by team-mate in this repo: 
-   https://github.com/leah25/vegetable_service_engine
+1. Launch **Android Studio**
+2. Select **File > Open** and navigate to the cloned folder
+3. Let Gradle sync complete
+
+### 3. Configure the server address
+
+Find the file(s) where the server URL / IP address is set (e.g., a constants file or inside the Activity making HTTP calls) and update it to match your server's IP:
+
+```java
+// Example — update to your server's IP address
+private static final String BASE_URL = "http://192.168.x.x:8080/VegetableRMI";
+```
+
+> **Tip:** If running on a local network, use the server machine's local IP. If running on an emulator pointing to your own machine, use `http://10.0.2.2:8080/VegetableRMI`.
+
+### 4. Start the backend server
+
+Refer to the [vegetable_service_engine README](https://github.com/leah25/vegetable_service_engine) for full instructions. In short:
+
+1. Open the server project in IntelliJ IDEA
+2. Run `VegetableComputeEngine.main()` — starts the RMI registry on port **1099**
+3. Deploy the WAR to Tomcat (or use the embedded Tomcat run config)
+4. Confirm both services are active before launching the Android app
+
+### 5. Run the app
+
+- Connect an **Android device** (with USB debugging enabled) or start an **Android Emulator**
+- Click **Run ▶** in Android Studio
+
+---
